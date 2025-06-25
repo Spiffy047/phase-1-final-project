@@ -1,0 +1,27 @@
+{
+  "tasks": [
+    {
+      "id": "1",
+      "text": "Code Challenge",
+      "completed": true,
+      "hours": "3",
+      "dueDate": "2025-06-25",
+      "time": "09:26"
+    },
+    {
+      "id": "2",
+      "text": "Plan project",
+      "completed": false,
+      "hours": "2",
+      "dueDate": "2025-06-26",
+      "time": "23:27"
+    },
+    {
+      "text": "sleep",
+      "completed": false,
+      "hours": "1",
+      "dueDate": "2025-06-25",
+      "id": "c4F36l8"
+    }
+  ]
+}
