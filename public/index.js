@@ -14,15 +14,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const taskList = document.querySelector('#task-list');
     const calendarEl = document.getElementById('calendar'); // Get the calendar element
 
-    const API_URL = 'https://phase-1-final-project-4q4b.onrender.com/tasks'; // Your json-server endpoint
+    const API_URL = 'https://phase-1-final-project-4q4b.onrender.com/tasks'; //json-server endpoint
 
-    let calendar; // Declare calendar globally
+    let calendar; 
 
     // --- Modal Functions ---
     function openModal(task = null) {
-        taskModal.style.display = 'block'; // Show the modal
-
-        // Reset form
+        taskModal.style.display = 'block'; 
         taskForm.reset();
         taskIdInput.value = '';
 
@@ -40,7 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function closeModal() {
-        taskModal.style.display = 'none'; // Hide the modal
+        taskModal.style.display = 'none'; 
     }
 
     // --- Task Rendering and Manipulation ---
@@ -58,20 +56,20 @@ document.addEventListener('DOMContentLoaded', () => {
             task.completed ? 'bg-green-100' : 'bg-gray-100'
         );
 
-        // --- NEW: Mouseover and Mouseleave Event Listeners for visual feedback ---
+        // --- Mouseover and Mouseleave Event Listeners for visual feedback ---
         li.addEventListener('mouseover', function() {
-            li.style.backgroundColor = task.completed ? '#c6f6d5' : '#e2e8f0'; // Lighter green or light gray on hover
-            li.style.transform = 'scale(1.01)'; // Slightly scale up
-            li.style.boxShadow = '0 4px 8px rgba(0,0,0,0.15)'; // More pronounced shadow
-            li.style.transition = 'all 0.2s ease-in-out'; // Smooth transition
+            li.style.backgroundColor = task.completed ? '#c6f6d5' : '#e2e8f0'; 
+            li.style.transform = 'scale(1.01)'; 
+            li.style.boxShadow = '0 4px 8px rgba(0,0,0,0.15)'; 
+            li.style.transition = 'all 0.2s ease-in-out';
         });
 
         li.addEventListener('mouseleave', function() {
-            li.style.backgroundColor = task.completed ? '#d1fae5' : '#f3f4f6'; // Revert to original background
-            li.style.transform = 'scale(1)'; // Revert scale
-            li.style.boxShadow = 'none'; // Remove shadow
+            li.style.backgroundColor = task.completed ? '#d1fae5' : '#f3f4f6'; 
+            li.style.transform = 'scale(1)';
+            li.style.boxShadow = 'none'; 
         });
-        // --- END NEW ---
+       
 
         li.innerHTML = `
             <div class="flex items-center flex-grow">
@@ -100,17 +98,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
             const tasks = await response.json();
-            taskList.innerHTML = ''; // Clear existing tasks
+            taskList.innerHTML = ''; 
             if (tasks.length === 0) {
                 taskList.innerHTML = '<p class="text-gray-600 text-center mt-4">No tasks yet. Add one!</p>';
             } else {
-                tasks.forEach(renderTask); // Use forEach for iteration
+                tasks.forEach(renderTask); 
             }
-            return tasks; // Return tasks for calendar initialization
+            return tasks; 
         } catch (error) {
             console.error('Error fetching tasks:', error);
             taskList.innerHTML = '<p class="text-red-500 text-center mt-4">Failed to load tasks. Please ensure json-server is running.</p>';
-            return []; // Return empty array on error
+            return []; 
         }
     }
 
@@ -149,8 +147,8 @@ document.addEventListener('DOMContentLoaded', () => {
             if (!response.ok) {
                 throw new Error(`Failed to delete task: ${response.statusText}`);
             }
-            loadTasks(); // Reload tasks after deletion
-            calendar.refetchEvents(); // Update calendar
+            loadTasks(); 
+            calendar.refetchEvents(); 
         } catch (error) {
             console.error('Error deleting task:', error);
             alert('Failed to delete task. See console for details.');
@@ -160,7 +158,7 @@ document.addEventListener('DOMContentLoaded', () => {
     async function toggleTaskCompletion(id, completed) {
         try {
             const response = await fetch(`${API_URL}/${id}`, {
-                method: 'PATCH', // Use PATCH for partial update
+                method: 'PATCH', 
                 headers: {
                     'Content-Type': 'application/json'
                 },
@@ -169,8 +167,8 @@ document.addEventListener('DOMContentLoaded', () => {
             if (!response.ok) {
                 throw new Error(`Failed to toggle task: ${response.statusText}`);
             }
-            loadTasks(); // Reload tasks after update
-            calendar.refetchEvents(); // Update calendar
+            loadTasks(); 
+            calendar.refetchEvents(); 
         } catch (error) {
             console.error('Error toggling task completion:', error);
             alert('Failed to update task. See console for details.');
@@ -179,8 +177,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- Calendar Initialization ---
     async function initializeCalendar() {
-        const myTasks = await loadTasks(); // Load tasks first
-
+        
         calendar = new FullCalendar.Calendar(calendarEl, {
             initialView: 'dayGridMonth',
             headerToolbar: {
@@ -188,16 +185,30 @@ document.addEventListener('DOMContentLoaded', () => {
                 center: 'title',
                 right: 'dayGridMonth,timeGridWeek,timeGridDay'
             },
-            events: myTasks.map(task => ({ // Use map for iteration to transform tasks to events
-                id: task.id,
-                title: task.text,
-                start: task.dueDate + (task.time ? `T${task.time}:00` : ''), // Combine date and time if available
-                allDay: !task.time, // If no time, it's an all-day event
-                color: task.completed ? '#d1fae5' : '#3B82F6', // Green for completed, blue for pending
-                textColor: task.completed ? '#10B981' : '#FFFFFF' // Darker green text for completed
-            })),
+            
+            events: async function(fetchInfo, successCallback, failureCallback) {
+                try {
+                    const response = await fetch(API_URL); 
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    const tasks = await response.json();
+                    const events = tasks.map(task => ({ 
+                        id: task.id,
+                        title: task.text,
+                        start: task.dueDate + (task.time ? `T${task.time}` : ''), 
+                        allDay: !task.time, 
+                        color: task.completed ? '#d1fae5' : '#3B82F6', 
+                        textColor: task.completed ? '#10B981' : '#FFFFFF'
+                    }));
+                    successCallback(events); 
+                } catch (error) {
+                    console.error('Error fetching tasks for calendar:', error);
+                    failureCallback(error); 
+                }
+            },
             eventClick: async function(info) {
-                // When a specific task on the calendar is clicked, open modal to edit it
+                
                 const taskId = info.event.id;
                 try {
                     const response = await fetch(`${API_URL}/${taskId}`);
@@ -212,22 +223,23 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             },
             dateClick: function(info) {
-                // When a specific date on the calendar is clicked, open modal to add a task for that date
-                const clickedDate = info.dateStr; // YYYY-MM-DD
-                openModal(); // Open modal for new task
-                taskDateInput.value = clickedDate; // Pre-fill the date
+                
+                const clickedDate = info.dateStr;
+                openModal(); 
+                taskDateInput.value = clickedDate; 
                 taskTextInput.focus();
             }
         });
-        calendar.render(); // Render the calendar
+        calendar.render(); 
+        loadTasks(); 
     }
 
-    // --- Event Listeners for Modal ---
+   
     openAddTaskButton.addEventListener('click', () => openModal());
     closeButton.addEventListener('click', closeModal);
     cancelButton.addEventListener('click', closeModal);
 
-    // Close modal if user clicks outside of it
+   
     window.addEventListener('click', (event) => {
         if (event.target === taskModal) {
             closeModal();
@@ -251,8 +263,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const savedTask = await saveTask(taskData);
         if (savedTask) {
             closeModal();
-            loadTasks(); // Reload tasks in the list
-            calendar.refetchEvents(); // Refresh calendar events
+            loadTasks();
+            calendar.refetchEvents(); 
         }
     });
 
@@ -286,6 +298,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Initial load of tasks and calendar when the page loads
+    
     initializeCalendar();
 });
