@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Task Manager</title>
+    <link rel="stylesheet" href="style.css">
+    <link href='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/main.min.css' rel='stylesheet' />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#landing">Tasks</a></li>
+                <li><a href="#calendar-section">Calendar</a></li>
+                <li><a href="#about-section">About</a></li>
+            </ul>
+        </nav>
+        <h1>Daily Task Manager</h1>
+    </header>
+
+    <div class="hero-section">
+        </div>
+
+    <div class="about" id="about-section">
+        <h3>About Us</h3>
+        <img src="images/about 1.jpg" alt="About Us Team">
+        <p>We provide simple and effective tools to manage your daily tasks and boost productivity.</p>
+        <p>This is a simple Single Page Application (SPA) designed to help users manage their daily tasks and schedule them effectively. It features full CRUD (Create, Read, Update, Delete) operations for tasks and integrates with a calendar to provide a visual overview of scheduled items.</p>
+    </div>
+
+    <main class="main-content-wrapper">
+        <div class="schedule-manager-container">
+            <div class="landing" id="landing"> <h2>My Daily Tasks</h2>
+                <div class="landing-row">
+                    <button id="open-add-task-modal">Add New Task</button>
+                </div>
+                <ul id="task-list">
+                    </ul>
+            </div>
+
+            <div class="calendar-section" id="calendar-section"> <h2>Daily Schedule</h2>
+                <div id="calendar"></div>
+            </div>
+        </div>
+    </main>
+
+    <div id="task-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h3 id="modal-title">Add New Task</h3>
+            <form id="task-form">
+                <input type="hidden" id="task-id">
+                <label for="task-text-input">Task Description:</label>
+                <input type="text" id="task-text-input" placeholder="e.g., Complete Project Report" required>
+
+                <label for="task-hours-input">Estimated Hours:</label>
+                <input type="number" id="task-hours-input" min="0.5" step="0.5" placeholder="e.g., 2.5">
+
+                <label for="task-date-input">Due Date:</label>
+                <input type="date" id="task-date-input" required>
+
+                <label for="task-time-input">Due Time (Optional):</label>
+                <input type="time" id="task-time-input">
+
+                <div class="form-actions">
+                    <button type="button" id="cancel-task-button" class="cancel-button">Cancel</button>
+                    <button type="submit" id="save-task-button">Save Task</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <h3>Contact Us</h3>
+                <ul class="list">
+                    <li><a href="mailto:mwanikijoe1@gmail.com"><i class="fa-solid fa-envelope"></i> email: mwanikijoe1@gmail.com</a></li>
+                    <li><a href="tel:+254728176233"><i class="fa-solid fa-phone"></i> Contact: +254728176233</a></li>
+                </ul>
+            </div>
+            <div class="footer-content">
+                <h3>Quick Links</h3>
+                <ul class="list">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Features</a></li>
+                </ul>
+            </div>
+            <div class="footer-content">
+                <h3>Follow Us</h3>
+                <div class="social-icon">
+                    
+                    <li><a href="mailto:mwanikijoe1@gmail.com"><i class="fa-solid fa-envelope"></i></a></li>
+                    <li><a href="www.linkedin.com/in/joe-m-kariuki-7b934a9b"><i class="fa-brands fa-linkedin-in"></i></a></li>
+                </div>
+            </div>
+        </div>
+        <div class="bottom-bar">
+            <p>&copy; 2025 Joe K Task Manager. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.js'></script>
+    <script src="index.js"></script>
+</body>
+</html>

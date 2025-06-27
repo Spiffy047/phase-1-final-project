@@ -1,0 +1,25 @@
+{
+  "name": "phase1-project",
+  "version": "1.0.0",
+  "description": "Daily Task Manager",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "json-server --watch db.json --port 3000"
+  },
+
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Spiffy047/phase-1-final-project.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Spiffy047/phase-1-final-project/issues"
+  },
+  "homepage": "https://github.com/Spiffy047/phase-1-final-project#readme",
+  "dependencies": {
+    "json-server": "^1.0.0-beta.3"
+  }
+}
