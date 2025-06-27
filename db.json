@@ -22,6 +22,30 @@
       "hours": "1",
       "dueDate": "2025-06-25",
       "id": "c4F36l8"
+    },
+    {
+      "id": "4",
+      "text": "Buy groceries",
+      "completed": false,
+      "hours": "1",
+      "dueDate": "2025-06-27",
+      "time": "18:00"
+    },
+    {
+      "id": "5",
+      "text": "Call Mom",
+      "completed": true,
+      "hours": "0.5",
+      "dueDate": "2025-06-27",
+      "time": "19:00"
+    },
+    {
+      "id": "6",
+      "text": "Exercise",
+      "completed": false,
+      "hours": "1",
+      "dueDate": "2025-06-28",
+      "time": "07:00"
     }
   ]
 }
