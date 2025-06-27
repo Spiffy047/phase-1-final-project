@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const taskList = document.querySelector('#task-list');
     const calendarEl = document.getElementById('calendar'); // Get the calendar element
 
-    const API_URL = 'http://localhost:3000/tasks'; // Your json-server endpoint
+    const API_URL = 'https://phase-1-final-project-4q4b.onrender.com/tasks'; // Your json-server endpoint
 
     let calendar; // Declare calendar globally
 
