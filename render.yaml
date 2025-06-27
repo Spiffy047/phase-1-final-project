@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: my-task-manager-api # Match this to your desired service name
+    env: node
+    repo: https://github.com/Spiffy047/phase-1-final-project.git # Your repo URL
+    branch: main
+    buildCommand: npm install
+    startCommand: node server.js # This is the key line
+    healthCheckPath: /
+    plan: free # Use 'free' for the free tier
