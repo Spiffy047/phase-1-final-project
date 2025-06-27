@@ -1,14 +1,14 @@
-/* Universal Box-Sizing for consistency */
+
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-family: 'Inter', sans-serif; /* Modern sans-serif font */
-    color: #333; /* Darker grey for primary text */
+    font-family: 'Inter', sans-serif; 
+    color: #333; 
 }
 
 body {
-    background-color: #f8f9fa; /* Very light grey background */
+    background-color: #f8f9fa; 
     line-height: 1.6;
     display: flex;
     flex-direction: column;
@@ -17,62 +17,61 @@ body {
 
 /* Header */
 header {
-    background-color: #ffffff; /* White header background */
-    padding-bottom: 20px; /* Adjust padding as title is now inside */
+    background-color: #ffffff;
+    padding-bottom: 20px; 
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05); /* Soft shadow for elevation */
     text-align: center;
 }
 
 header h1 {
-    color: #4a5568; /* Darker, sophisticated blue-grey for title */
-    margin-top: 15px; /* Space from nav */
+    color: #4a5568; 
+    margin-top: 15px; 
     font-size: 2.8em;
-    font-weight: 700; /* Bolder font for prominence */
+    font-weight: 700; 
 }
 
 /* Navigation Bar */
 nav {
-    background-color: #4c566a; /* Deep, muted blue-grey for nav */
+    background-color: #4c566a; 
     overflow: hidden;
-    padding: 5px 0; /* Slightly reduced padding for a tighter nav */
+    padding: 5px 0; 
 }
 
 nav ul {
     list-style-type: none;
     display: flex;
-    justify-content: center; /* Center nav items */
-    padding: 0; /* Remove default ul padding */
+    justify-content: center;
 }
 
 nav ul li a {
     display: block;
-    color: #eceff4; /* Light text for contrast */
+    color: #eceff4; 
     text-align: center;
     padding: 10px 20px;
     text-decoration: none;
     font-weight: 500;
     transition: background-color 0.3s ease, color 0.3s ease;
-    border-radius: 5px; /* Slightly rounded corners for links */
+    border-radius: 5px; 
 }
 
 nav ul li a:hover {
-    background-color: #5e6d82; /* Slightly lighter shade on hover */
+    background-color: #5e6d82; 
     color: #ffffff;
 }
 
-/* NEW: Hero Section Styling for the large background image */
+
 .hero-section {
-    background-image: url('./images/about.jpg'); /* Set your image path here */
-    background-size: cover; /* Cover the entire area */
-    background-position: center; /* Center the image */
-    background-repeat: no-repeat; /* Do not repeat */
-    height: 400px; /* Fixed height for the hero section */
+    background-image: url('./images/about.jpg');
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat;
+    height: 400px; 
     display: flex;
-    align-items: center; /* Vertically center content if you add any */
-    justify-content: center; /* Horizontally center content if you add any */
-    color: white; /* Default text color for potential future content */
-    text-shadow: 0 2px 4px rgba(0,0,0,0.5); /* Subtle text shadow for readability */
-    margin-bottom: 40px; /* Space below the hero section */
+    align-items: center; 
+    justify-content: center; 
+    color: white; 
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5); 
+    margin-bottom: 40px; 
 }
 
 
@@ -80,15 +79,15 @@ nav ul li a:hover {
 .about {
     background-color: #ffffff;
     padding: 50px 30px;
-    margin: 40px auto; /* Vertical spacing and centering */
-    max-width: 800px; /* Adjusted max-width for better fit, especially on smaller screens */
+    margin: 40px auto; 
+    max-width: 800px; 
     border-radius: 12px;
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
     text-align: center;
     display: flex;
     flex-direction: column;
-    align-items: center; /* Centers children horizontally */
-    gap: 20px; /* Space between elements within the about section */
+    align-items: center; 
+    gap: 20px; 
 }
 
 .about h3 {
@@ -97,10 +96,10 @@ nav ul li a:hover {
     font-weight: 700;
 }
 
-.about img { /* Styling for the image inside the .about div */
-    max-width: 100%; /* Ensures it scales down on small screens */
-    width: 200px; /* Fixed width for larger screens */
-    height: 200px; /* Fixed height */
+.about img { 
+    max-width: 100%; 
+    width: 200px;
+    height: 200px; 
     object-fit: cover;
     border-radius: 50%;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
@@ -111,7 +110,7 @@ nav ul li a:hover {
     font-size: 1.15em;
     line-height: 1.7;
     color: #667085;
-    max-width: 700px; /* Can be adjusted if text seems too wide */
+    max-width: 700px; 
     margin: 0 auto;
 }
 
@@ -125,7 +124,7 @@ nav ul li a:hover {
     justify-content: center;
 }
 
-/* Schedule Manager Container (Flex container for task list and calendar) */
+/* Schedule Manager Container*/
 .schedule-manager-container {
     display: flex;
     flex-wrap: wrap;
